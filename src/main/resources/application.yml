@@ -1,0 +1,59 @@
+spring:
+  web:
+    resources:
+      # 파일의 해시값을 URL에 style-{해시값}.css 같이 자동으로 포함
+      add-mappings: true
+      chain:
+        strategy:
+          content:
+            enabled: true
+  application:
+    name: semo
+  devtools:
+    livereload:
+      enabled: true
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mariadb://10.100.203.57:3306/db7
+    username: db7
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    show-sql: true
+  thymeleaf:
+    cache: false
+  servlet:
+    context-path: /
+server:
+  port: 8080
+# Jasypt
+jasypt:
+  encryptor:
+    password: v3ryS3cr3tK3yMus7B3L0ng3noughT0S1gnTh3Tok3n123456
+# Logging
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
+com:
+  semo:
+    jwt:
+      secret: v3ryS3cr3tK3yMus7B3L0ng3noughT0S1gnTh3Tok3n123456
+      expiration-time: 1
+    file:
+      # windows
+      upload-dir: C:/dev/upload
+      # Mac/Linux
+      #upload-dir: ~/Developer/semo/upload

@@ -1,0 +1,380 @@
+/* 서비스 소개 페이지 전용 스타일 */
+.service-intro {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+/* 헤로 섹션 */
+.intro-hero {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,0 1000,60 0,100"/></svg>');
+  background-size: cover;
+  z-index: 1;
+}
+
+.hero-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.intro-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.intro-hero p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* 메인 컨텐츠 */
+.intro-content {
+  padding: 80px 20px;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* SEMO란? 섹션 */
+.what-is-semo {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #1976d2;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.semo-definition {
+  background: linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%);
+  padding: 60px 40px;
+  border-radius: 30px;
+  margin-bottom: 60px;
+}
+
+.semo-definition h3 {
+  font-size: 2rem;
+  color: #1976d2;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.semo-definition p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 핵심 특징 섹션 */
+.key-features {
+  margin-bottom: 100px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.feature-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(33, 150, 243, 0.2);
+  border-color: #bbdefb;
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  background: linear-gradient(135deg, #e3f2fd, #90caf9);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  color: #1976d2;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.feature-description {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* 이용 과정 섹션 */
+.how-it-works {
+  background: #f8f9fa;
+  padding: 80px 40px;
+  border-radius: 30px;
+  margin-bottom: 80px;
+}
+
+.process-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  position: relative;
+}
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 1;
+}
+
+.step-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.step-number {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 auto 20px;
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+}
+
+.step-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.step-description {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* CTA 섹션 */
+.cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  padding: 60px 40px;
+  border-radius: 30px;
+  color: white;
+}
+
+.cta-title {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.cta-description {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 18px 35px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.cta-btn.primary {
+  background: white;
+  color: #2196f3;
+}
+
+.cta-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-3px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .intro-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .intro-hero p {
+    font-size: 1.1rem;
+  }
+
+  .hero-stats {
+    gap: 40px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .process-steps {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .process-steps::before {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-btn {
+    width: 250px;
+    text-align: center;
+  }
+
+  .semo-definition,
+  .how-it-works,
+  .cta-section {
+    padding: 40px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-hero {
+    padding: 60px 15px;
+  }
+
+  .intro-hero h1 {
+    font-size: 2rem;
+  }
+
+  .intro-content {
+    padding: 60px 15px;
+  }
+
+  .hero-stats {
+    gap: 30px;
+  }
+
+  .feature-card {
+    padding: 30px 20px;
+  }
+
+  .cta-title {
+    font-size: 1.8rem;
+  }
+}

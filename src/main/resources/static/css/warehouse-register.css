@@ -1,0 +1,385 @@
+/* ========== WAREHOUSE REGISTER PAGE STYLES ========== */
+.warehouse-register-page {
+  margin-top: 80px;
+  padding: 60px 20px 80px;
+  background: linear-gradient(135deg, #f5f9ff 0%, #e3f2fd 100%);
+  min-height: calc(100vh - 80px);
+}
+
+.register-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ========== HEADER ========== */
+.register-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.register-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 15px;
+}
+
+.register-subtitle {
+  font-size: 16px;
+  color: #666;
+}
+
+/* ========== FORM ========== */
+.register-form {
+  background: white;
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.form-section {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid #f0f4f8;
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(135deg, #42a5f5, #2196f3);
+  border-radius: 2px;
+}
+
+/* ========== FORM GROUPS ========== */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.required {
+  color: #ff4444;
+  margin-left: 3px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e3f2fd;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #333;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.form-help {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #999;
+}
+
+/* ========== ADDRESS INPUT ========== */
+.address-input-group {
+  display: flex;
+  gap: 12px;
+}
+
+.address-input-group .form-input {
+  flex: 1;
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+.btn-search-address {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #42a5f5, #2196f3);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.btn-search-address:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+}
+
+/* ========== MAP PREVIEW ========== */
+.map-preview {
+  width: 100%;
+  height: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 3px solid #e3f2fd;
+  background: #f8f9fa;
+}
+
+/* ========== FORM ROW ========== */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ========== RADIO GROUP ========== */
+.radio-group {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 12px 20px;
+  border: 2px solid #e3f2fd;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.radio-label:hover {
+  border-color: #bbdefb;
+  background: #f8f9fa;
+}
+
+.radio-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"]:checked + span {
+  color: #2196f3;
+  font-weight: 600;
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+  border-color: #2196f3;
+  background: #e3f2fd;
+}
+
+/* ========== IMAGE UPLOAD ========== */
+.image-upload-area {
+  margin-top: 10px;
+}
+
+.form-input-file {
+  display: none;
+}
+
+.image-preview-container {
+  width: 100%;
+  min-height: 300px;
+  border: 3px dashed #e3f2fd;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-preview-container:hover {
+  border-color: #2196f3;
+  background: #e3f2fd;
+}
+
+.upload-placeholder {
+  text-align: center;
+  color: #666;
+}
+
+.upload-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.upload-placeholder p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.upload-hint {
+  font-size: 13px;
+  color: #999;
+}
+
+.image-preview-container.has-image {
+  border-style: solid;
+  border-color: #2196f3;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.remove-image-btn:hover {
+  background: #ff0000;
+  transform: scale(1.1);
+}
+
+/* ========== FORM ACTIONS ========== */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.btn-cancel,
+.btn-submit {
+  padding: 16px 40px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-cancel {
+  background: #f0f4f8;
+  color: #666;
+}
+
+.btn-cancel:hover {
+  background: #e3e8ed;
+  transform: translateY(-2px);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #42a5f5, #2196f3);
+  color: white;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .register-form {
+    padding: 30px 20px;
+  }
+
+  .register-title {
+    font-size: 30px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .address-input-group {
+    flex-direction: column;
+  }
+
+  .btn-search-address {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-cancel,
+  .btn-submit {
+    width: 100%;
+  }
+
+  .map-preview {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .warehouse-register-page {
+    padding: 40px 15px;
+  }
+
+  .register-title {
+    font-size: 26px;
+  }
+
+  .register-form {
+    padding: 25px 15px;
+  }
+
+  .radio-group {
+    flex-direction: column;
+  }
+
+  .radio-label {
+    width: 100%;
+  }
+}

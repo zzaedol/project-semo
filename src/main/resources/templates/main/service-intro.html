@@ -1,0 +1,140 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: heowonjae
+  Date: 2025. 9. 25.
+  Time: 서비스 소개 페이지
+  SEMO 서비스 소개 - 간결한 서비스 설명과 주요 특징
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <title>서비스 소개 - SEMO</title>
+  <meta name="description" content="SEMO - 나만의 안전한 공유창고 서비스 소개">
+</th:block>
+
+<th:block layout:fragment="extra-css">
+  <link th:href="@{/css/service-intro.css}" rel="stylesheet">
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="service-intro">
+    <!-- 헤로 섹션 -->
+    <section class="intro-hero">
+      <div class="hero-container">
+        <h1>SEMO</h1>
+        <p>
+          나만의 안전한 공유창고 서비스<br>
+          필요할 때, 언제 어디서든 스마트하게 이용하세요
+        </p>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">24</span>
+            <span class="stat-label">시간 출입가능</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1000+</span>
+            <span class="stat-label">전국 지점</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">99%</span>
+            <span class="stat-label">고객 만족도</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 메인 컨텐츠 -->
+    <section class="intro-content">
+      <div class="content-container">
+        
+        <!-- SEMO란? -->
+        <div class="what-is-semo">
+          <h2 class="section-title">SEMO란?</h2>
+          <p class="section-subtitle">
+            공간이 부족할 때, 짐을 안전하게 보관하고 싶을 때<br>
+            언제 어디서나 쉽고 편리하게 이용할 수 있는 스마트 창고 서비스입니다.
+          </p>
+          
+          <div class="semo-definition">
+            <h3>🏢 Safety Everything Management Operation</h3>
+            <p>
+              SEMO는 'Safety + Everything + Management + Operation'의 줄임말로,
+              모든 것을 공유하고 더욱 체계적으로 관리한다는 의미입니다. 
+              개인부터 기업까지, 누구나 필요에 맞게 창고 공간을 이용할 수 있도록 
+              혁신적인 공유 창고 플랫폼을 제공합니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 이용 과정 -->
+        <div class="how-it-works">
+          <h2 class="section-title">이용 과정</h2>
+          <p class="section-subtitle">
+            간단한 4단계로 SEMO를 이용하실 수 있습니다.
+          </p>
+          
+          <div class="process-steps">
+            <div class="step-item">
+              <div class="step-number">1</div>
+              <h3 class="step-title">회원가입</h3>
+              <p class="step-description">
+                간단한 정보 입력으로<br>
+                회원가입 완료
+              </p>
+            </div>
+
+            <div class="step-item">
+              <div class="step-number">2</div>
+              <h3 class="step-title">창고 선택</h3>
+              <p class="step-description">
+                위치와 크기를 고려해<br>
+                최적의 창고 선택
+              </p>
+            </div>
+
+            <div class="step-item">
+              <div class="step-number">3</div>
+              <h3 class="step-title">예약 결제</h3>
+              <p class="step-description">
+                원하는 기간을 선택하고<br>
+                간편하게 결제
+              </p>
+            </div>
+
+            <div class="step-item">
+              <div class="step-number">4</div>
+              <h3 class="step-title">바로 이용</h3>
+              <p class="step-description">
+                스마트폰으로 출입하고<br>
+                물품을 안전하게 보관
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA 섹션 -->
+        <div class="cta-section">
+          <h2 class="cta-title">지금 SEMO를 시작해보세요!</h2>
+          <p class="cta-description">
+            신규 회원 대상 첫 달 50% 할인 혜택을 놓치지 마세요
+          </p>
+          <div class="cta-buttons">
+            <a th:href="@{/member/signup}" class="cta-btn primary">무료 회원가입</a>
+            <a th:href="@{/main/pricing}" class="cta-btn secondary">요금제 보기</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</th:block>
+
+<th:block layout:fragment="extra-js">
+  <script th:src="@{/js/service-intro.js}"></script>
+</th:block>
+</html>

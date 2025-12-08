@@ -1,0 +1,77 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: heowonjae
+  Date: 2025. 9. 1.
+  Time: 13:25
+  To change this template use File | Settings | File Templates.
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <header th:fragment="header" class="header">
+    <div class="header-container">
+      <div class="header-main">
+        <!-- Logo -->
+        <a th:href="@{/main}" class="logo">
+          <div class="logo-icon">📦</div>
+          <span class="logo-text">SEMO</span>
+        </a>
+
+        <!-- Navigation -->
+        <nav>
+          <ul class="nav-menu">
+            <li><a th:href="@{/main/service-intro}" class="nav-link">서비스 소개</a></li>
+            <li><a th:href="@{/main/pricing}" class="nav-link">요금안내</a></li>
+            <li><a th:href="@{/main/location}" class="nav-link">지점찾기</a></li>
+<!--            <li><a href="#" class="nav-link">이용가이드</a></li>-->
+            <li><a th:href="@{/main/customer-service}" class="nav-link">고객센터</a></li>
+            <!-- 임대인 전용 메뉴 (JavaScript로 동적 표시) -->
+            <li id="ownerMenu" style="display: none;">
+              <a th:href="@{/warehouse/register}" class="nav-link nav-link-owner">📦 창고 등록</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Header Buttons -->
+        <div class="header-buttons">
+          <a th:href="@{/main/login}" class="btn-header btn-login">
+            로그인
+          </a>
+          <a th:href="@{/member/signup}" class="btn-header btn-signup">
+            회원가입
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="logout-modal">
+      <div class="logout-modal-content">
+        <div class="logout-modal-icon">👋</div>
+        <h3 class="logout-modal-title">로그아웃 확인</h3>
+        <p class="logout-modal-message">
+          <span id="logoutUserName"></span>님<br>
+          로그아웃 하시겠습니까?
+        </p>
+        <div class="logout-modal-buttons">
+          <button class="logout-btn-confirm" onclick="confirmLogout()">로그아웃</button>
+          <button class="logout-btn-cancel" onclick="closeLogoutModal()">취소</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Success Modal -->
+    <div id="logoutSuccessModal" class="logout-modal">
+      <div class="logout-modal-content">
+        <div class="logout-modal-icon">✅</div>
+        <h3 class="logout-modal-title">로그아웃 완료</h3>
+        <p class="logout-modal-message">
+          <span id="logoutSuccessUserName"></span>님<br>
+          로그아웃 되었습니다.
+        </p>
+        <div class="logout-modal-buttons">
+          <button class="logout-btn-confirm" onclick="closeLogoutSuccessModal()">확인</button>
+        </div>
+      </div>
+    </div>
+  </header>
+</html>

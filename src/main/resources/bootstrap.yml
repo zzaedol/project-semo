@@ -1,0 +1,17 @@
+# 애플리케이션 이름 (Vault에서 설정 정보를 찾을 때 사용)
+spring:
+  application:
+    name: semo
+  cloud:
+    vault:
+      enabled: true
+      uri: http://10.100.203.57:8200
+      authentication: TOKEN
+      token: myroot
+      fail-fast: true
+      connect-timeout: 5000
+      read-timeout: 15000
+      generic:
+        enabled: true
+        # Vault에 저장된 비밀 정보를 가져올 경로
+        path: secret/semo

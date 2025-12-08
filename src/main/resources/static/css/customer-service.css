@@ -1,0 +1,397 @@
+/* 고객센터 페이지 전용 스타일 */
+.customer-service {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+/* 헤더 섹션 */
+.cs-header {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cs-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cs-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cs-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+
+/* 빠른 접근 버튼들 */
+.quick-access {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.quick-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.quick-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2196f3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 메인 컨텐츠 */
+.cs-content {
+  padding: 80px 20px;
+  background: #f8f9fa;
+}
+
+.cs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cs-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* FAQ 섹션 */
+.faq-section {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 28px;
+  color: #1976d2;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.section-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #e3f2fd, #90caf9);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.faq-item {
+  border: 2px solid #f0f4f8;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  border-color: #bbdefb;
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.1);
+}
+
+.faq-question {
+  padding: 20px;
+  background: #fafbfc;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.3s;
+}
+
+.faq-question:hover {
+  background: #f0f4f8;
+  color: #1976d2;
+}
+
+.faq-toggle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2196f3;
+  transition: transform 0.3s;
+}
+
+.faq-answer {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  background: white;
+  color: #666;
+  line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+  padding: 20px;
+  max-height: 200px;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(45deg);
+}
+
+/* 사이드바 */
+.cs-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sidebar-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.sidebar-card h3 {
+  color: #1976d2;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.contact-info {
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #2196f3;
+}
+
+.contact-icon {
+  width: 24px;
+  height: 24px;
+  color: #2196f3;
+  font-size: 18px;
+}
+
+.contact-text {
+  color: #333;
+  font-weight: 500;
+}
+
+.cs-button {
+  background: linear-gradient(135deg, #42a5f5, #2196f3);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.cs-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+}
+
+/* 공지사항 섹션 */
+.notice-section {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.notice-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s;
+}
+
+.notice-item:last-child {
+  border-bottom: none;
+}
+
+.notice-item:hover {
+  background: #f8f9fa;
+  padding: 20px 15px;
+  border-radius: 10px;
+}
+
+.notice-title {
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  flex: 1;
+}
+
+.notice-title:hover {
+  color: #2196f3;
+}
+
+.notice-date {
+  color: #999;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.notice-badge {
+  background: #ff4444;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/* 운영시간 테이블 */
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.hours-table th,
+.hours-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.hours-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.hours-table td {
+  color: #666;
+}
+
+/* 공지사항 숨김/보임 상태 */
+.notice-item.notice-hidden {
+  display: none;
+}
+
+.notice-item.notice-visible {
+  display: flex;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .cs-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .cs-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .quick-access {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quick-btn {
+    width: 250px;
+    text-align: center;
+  }
+
+  .faq-question {
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .faq-section,
+  .sidebar-card,
+  .notice-section {
+    padding: 25px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-header {
+    padding: 40px 15px;
+  }
+
+  .cs-header h1 {
+    font-size: 2rem;
+  }
+
+  .cs-content {
+    padding: 40px 15px;
+  }
+
+  .notice-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .notice-date {
+    margin-left: 0;
+  }
+}

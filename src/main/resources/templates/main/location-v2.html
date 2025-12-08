@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <title>지점 안내 - SEMO</title>
+  <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=13972f08d11df78c9beec8fa47fddabd&libraries=services"></script>
+</th:block>
+
+<th:block layout:fragment="extra-css">
+  <link th:href="@{/css/location.css}" rel="stylesheet"/>
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="location-page">
+    <div class="location-container">
+      <div class="location-header">
+        <h1 class="location-title">전국 SEMO 지점 안내</h1>
+        <p class="location-subtitle">
+          가까운 SEMO 창고를 찾아보세요.<br>
+          전국 각지에 위치한 안전하고 깨끗한 공유창고를 이용하실 수 있습니다.
+        </p>
+      </div>
+
+      <div class="map-section">
+        <div class="map-header">
+          <h2 class="map-title">📍 지도에서 찾기</h2>
+          <div class="map-controls">
+            <div class="map-filters">
+              <button class="filter-btn active" data-region="all">전체</button>
+              <button class="filter-btn" data-region="seoul">서울</button>
+              <button class="filter-btn" data-region="gyeonggi">경기</button>
+              <button class="filter-btn" data-region="incheon">인천</button>
+              <button class="filter-btn" data-region="busan">부산</button>
+              <button class="filter-btn" data-region="daegu">대구</button>
+            </div>
+            <button id="resetMapBtn" class="reset-btn">🔄 초기화</button>
+          </div>
+        </div>
+        <div class="map-container">
+          <div id="map"></div>
+        </div>
+      </div>
+
+      <div class="warehouse-section">
+        <div class="warehouse-header">
+          <h2 class="warehouse-title">🏢 이용 가능한 창고</h2>
+          <div class="warehouse-count">
+            전체 <strong id="warehouseCount">12</strong>개 지점
+          </div>
+        </div>
+        <div id="warehouseList" class="warehouse-grid"></div>
+      </div>
+    </div>
+  </div>
+</th:block>
+
+<th:block layout:fragment="extra-js">
+  <script th:src="@{/js/location.js}"></script>
+</th:block>
+</html>

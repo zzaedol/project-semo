@@ -1,0 +1,3 @@
+### POST logout
+POST localhost:8080/api/member/logout
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1RFTkFOVCJdLCJlbWFpbCI6InRlc3RAYS5jb20iLCJpYXQiOjE3NTg2MDcyMDAsImV4cCI6MTc1ODYxMDgwMH0.sVJyYpeBvIBPr_nPEXuCRaB5jVPG2gL1IKaktLY_eag

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <title>창고 등록 - SEMO</title>
+  <meta name="description" content="SEMO 창고 등록 - 임대인 전용 창고 등록 페이지">
+</th:block>
+
+<!-- 외부 CSS 로드 -->
+<th:block layout:fragment="extra-css">
+  <link rel="stylesheet" th:href="@{/css/warehouse-register.css}">
+  <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=13972f08d11df78c9beec8fa47fddabd&libraries=services"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="warehouse-register-page">
+    <div class="register-container">
+      <!-- 헤더 -->
+      <div class="register-header">
+        <h1 class="register-title">📦 창고 등록</h1>
+        <p class="register-subtitle">임대인님의 창고 정보를 등록해주세요.</p>
+      </div>
+
+      <!-- 등록 폼 -->
+      <form id="warehouseRegisterForm" class="register-form">
+        <!-- 기본 정보 섹션 -->
+        <div class="form-section">
+          <h2 class="section-title">기본 정보</h2>
+
+          <div class="form-group">
+            <label for="title" class="form-label">창고명 <span class="required">*</span></label>
+            <input type="text" id="title" name="title" class="form-input" placeholder="예: 강남 프리미엄 창고" required>
+            <span class="form-help">고객에게 보여질 창고 이름을 입력해주세요.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">상세 설명</label>
+            <textarea id="description" name="description" class="form-textarea" rows="5" placeholder="창고의 특징, 편의시설, 주변 환경 등을 자유롭게 작성해주세요."></textarea>
+          </div>
+        </div>
+
+        <!-- 위치 정보 섹션 -->
+        <div class="form-section">
+          <h2 class="section-title">위치 정보</h2>
+
+          <div class="form-group">
+            <label for="address" class="form-label">주소 <span class="required">*</span></label>
+            <div class="address-input-group">
+              <input type="text" id="address" name="address" class="form-input" placeholder="주소를 검색해주세요" readonly required>
+              <button type="button" id="searchAddressBtn" class="btn-search-address">주소 검색</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">지도 미리보기</label>
+            <div id="map" class="map-preview"></div>
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+          </div>
+        </div>
+
+        <!-- 창고 상세 정보 섹션 -->
+        <div class="form-section">
+          <h2 class="section-title">창고 상세 정보</h2>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="areaSqm" class="form-label">면적 (㎡) <span class="required">*</span></label>
+              <input type="number" id="areaSqm" name="areaSqm" class="form-input" placeholder="예: 50" step="0.01" min="0" required>
+            </div>
+
+            <div class="form-group">
+              <label for="pricePerMonth" class="form-label">월 임대료 (원) <span class="required">*</span></label>
+              <input type="number" id="pricePerMonth" name="pricePerMonth" class="form-input" placeholder="예: 500000" step="1000" min="0" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">예약 가능 여부</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="availableStatus" value="true" checked>
+                <span>예약 가능</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="availableStatus" value="false">
+                <span>예약 불가</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="warehouseImage" class="form-label">창고 이미지</label>
+            <div class="image-upload-area">
+              <input type="file" id="warehouseImage" name="warehouseImage" accept="image/*" class="form-input-file">
+              <div class="image-preview-container" id="imagePreviewContainer">
+                <div class="upload-placeholder">
+                  <span class="upload-icon">📷</span>
+                  <p>이미지를 선택하거나 드래그하세요</p>
+                  <span class="upload-hint">JPG, PNG, GIF (최대 5MB)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 버튼 그룹 -->
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" onclick="history.back()">취소</button>
+          <button type="submit" class="btn-submit">등록하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</th:block>
+
+<!-- 외부 JS 로드 -->
+<th:block layout:fragment="extra-js">
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script th:src="@{/js/warehouse-register.js}"></script>
+</th:block>
+</html>

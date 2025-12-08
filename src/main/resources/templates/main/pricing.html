@@ -1,0 +1,225 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: heowonjae
+  Date: 2025. 9. 25.
+  Time: 요금안내 페이지
+  SEMO 요금안내 - 상세한 요금제 정보와 혜택
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <title>요금안내 - SEMO</title>
+  <meta name="description" content="SEMO 요금안내 - 합리적인 가격의 창고 서비스 요금제">
+</th:block>
+
+<th:block layout:fragment="extra-css">
+  <link th:href="@{/css/pricing.css}" rel="stylesheet">
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="pricing-page">
+    <!-- 헤더 섹션 -->
+    <section class="pricing-header">
+      <div class="pricing-header-container">
+        <h1>요금안내</h1>
+        <p>
+          필요에 따라 선택하는 맞춤형 요금제<br>
+          합리적인 가격으로 안전한 창고 서비스를 이용하세요
+        </p>
+        <div class="pricing-highlight">
+          <strong>🎉 신규 회원 특가: 첫 달 50% 할인!</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- 메인 컨텐츠 -->
+    <section class="pricing-content">
+      <div class="pricing-container">
+        
+        <!-- 결제 주기 선택 -->
+        <div class="billing-toggle">
+          <h3>결제 주기를 선택해보세요</h3>
+          <div class="toggle-switch">
+            <div class="toggle-option active" onclick="toggleBilling('monthly')">월 단위</div>
+            <div class="toggle-option" onclick="toggleBilling('yearly')">
+              년 단위
+              <span class="discount-badge">2달 무료!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 요금제 카드들 -->
+        <div class="pricing-grid">
+          <!-- Basic 플랜 -->
+          <div class="pricing-card">
+            <div class="plan-icon">📦</div>
+            <h3 class="pricing-title">Basic</h3>
+            <div class="pricing-price" id="basic-price">29,000</div>
+            <div class="pricing-period">원/월</div>
+            <div class="original-price" id="basic-original" style="display: none;">58,000원</div>
+            
+            <div class="space-info">
+              <div class="space-size">1평 공간</div>
+              <div class="space-description">약 3.3㎡ (가로 1.8m × 세로 1.8m)</div>
+            </div>
+
+            <ul class="pricing-features">
+              <li>24시간 언제든 출입가능</li>
+              <li>기본 보안 시스템</li>
+              <li>월 단위 계약</li>
+              <li>CCTV 감시</li>
+              <li>스마트폰 출입 시스템</li>
+              <li class="not-included">온습도 관리</li>
+              <li class="not-included">보험 혜택</li>
+              <li class="not-included">전담 매니저</li>
+            </ul>
+
+            <a href="#" class="pricing-button">Basic 선택하기</a>
+          </div>
+
+          <!-- Standard 플랜 -->
+          <div class="pricing-card">
+            <div class="plan-icon">⭐</div>
+            <h3 class="pricing-title">Standard</h3>
+            <div class="pricing-price" id="standard-price">49,000</div>
+            <div class="pricing-period">원/월</div>
+            <div class="original-price" id="standard-original" style="display: none;">98,000원</div>
+            
+            <div class="space-info">
+              <div class="space-size">2평 공간</div>
+              <div class="space-description">약 6.6㎡ (가로 2.5m × 세로 2.6m)</div>
+            </div>
+
+            <ul class="pricing-features">
+              <li>24시간 언제든 출입가능</li>
+              <li>프리미엄 보안 시스템</li>
+              <li>온습도 자동 관리</li>
+              <li>보험 가입 (최대 300만원)</li>
+              <li>CCTV + 센서 감시</li>
+              <li>스마트폰 출입 시스템</li>
+              <li class="premium">우선 고객지원</li>
+              <li class="not-included">전담 매니저</li>
+            </ul>
+
+            <a href="#" class="pricing-button">Standard 선택하기</a>
+          </div>
+
+          <!-- Premium 플랜 -->
+          <div class="pricing-card">
+            <div class="plan-icon">👑</div>
+            <h3 class="pricing-title">Premium</h3>
+            <div class="pricing-price" id="premium-price">99,000</div>
+            <div class="pricing-period">원/월</div>
+            <div class="original-price" id="premium-original" style="display: none;">198,000원</div>
+            
+            <div class="space-info">
+              <div class="space-size">5평 이상</div>
+              <div class="space-description">약 16.5㎡+ (고객 맞춤형 공간 제공)</div>
+            </div>
+
+            <ul class="pricing-features">
+              <li>24시간 언제든 출입가능</li>
+              <li>VIP 보안 시스템</li>
+              <li>완벽한 온습도 관리</li>
+              <li>보험 가입 (최대 1000만원)</li>
+              <li>전담 매니저 배정</li>
+              <li>우선 픽업&배송 서비스</li>
+              <li class="premium">24시간 전담 고객지원</li>
+              <li class="premium">무료 청소 서비스</li>
+            </ul>
+
+            <a href="#" class="pricing-button">Premium 선택하기</a>
+          </div>
+        </div>
+
+        <!-- 추가 정보 -->
+        <div class="additional-info">
+          <div class="info-grid">
+            <div class="info-section">
+              <h3>
+                <div class="info-icon">💳</div>
+                결제 및 환불 정책
+              </h3>
+              <ul class="info-list">
+                <li>신용카드, 체크카드, 계좌이체 가능</li>
+                <li>매월 자동결제 (해지 언제든 가능)</li>
+                <li>이용 시작일 3일 전까지 전액 환불</li>
+                <li>중도 해지 시 일할계산 환불</li>
+                <li>첫 달 할인은 신규 회원만 적용</li>
+              </ul>
+            </div>
+
+            <div class="info-section">
+              <h3>
+                <div class="info-icon">📋</div>
+                이용 약관 및 제한사항
+              </h3>
+              <ul class="info-list">
+                <li>인화성, 폭발성 물질 보관 금지</li>
+                <li>부패하기 쉬운 식품 보관 금지</li>
+                <li>생물, 식물 보관 금지</li>
+                <li>불법 물품 보관 절대 금지</li>
+                <li>최소 이용 기간: 1개월</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 섹션 -->
+        <div class="pricing-faq">
+          <h2 class="faq-title">요금 관련 자주묻는질문</h2>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>년 단위 결제 시 정말 2달이 무료인가요?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>네, 맞습니다! 년 단위 결제 시 12개월 가격으로 14개월을 이용하실 수 있어 실질적으로 2달이 무료입니다.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>중간에 플랜을 변경할 수 있나요?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>네, 언제든 플랜 업그레이드가 가능합니다. 다운그레이드는 다음 결제일부터 적용됩니다.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>보험 혜택은 어떤 경우에 적용되나요?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>화재, 도난, 천재지변 등으로 인한 물품 손실 시 보상받으실 수 있습니다. 단, 보관 금지 물품은 제외됩니다.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>첫 달 50% 할인은 어떻게 적용되나요?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>신규 회원가입 후 첫 결제 시 자동으로 50% 할인이 적용됩니다. 별도 쿠폰이나 코드 입력은 필요 없습니다.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</th:block>
+
+<th:block layout:fragment="extra-js">
+  <script th:src="@{/js/pricing.js}"></script>
+</th:block>
+</html>

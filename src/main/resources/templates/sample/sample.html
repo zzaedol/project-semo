@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <!-- 페이지별 제목을 변경 하고 싶을 때 -->
+</th:block>
+
+<th:block layout:fragment="extra-css">
+  <!-- 페이지별 추가하고 싶은 style이 있을때 -->
+</th:block>
+
+  <th:block layout:fragment="content">
+    <!-- main에 들어갈 페이지 내용 -->
+  </th:block>
+
+  <th:block layout:fragment="extra-js">
+    <script th:inline="javascript">
+      // 페이지별 추가 하고 싶은 javascript가 있을 때
+    </script>
+  </th:block>
+
+</html>

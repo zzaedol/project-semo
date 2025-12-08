@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <!-- 페이지별 제목을 변경 하고 싶을 때 -->
+</th:block>
+
+<th:block layout:fragment="extra-css">
+  <!-- 페이지별 추가하고 싶은 style이 있을때 -->
+  <link rel="stylesheet" th:href="@{/css/signup.css}">
+</th:block>
+
+  <th:block layout:fragment="content">
+    <!-- main에 들어갈 페이지 내용 -->
+    <!-- SIGNUP CONTAINER -->
+    <div class="signup-wrapper">
+      <div class="signup-container">
+        <!-- Progress Bar -->
+        <div class="progress-header">
+          <div class="progress-bar">
+            <div class="progress-line" id="progressLine" style="width: 0%"></div>
+
+            <div class="progress-step">
+              <div class="step-circle active" id="step1Circle">1</div>
+              <span class="step-label active">회원 유형</span>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle" id="step2Circle">2</div>
+              <span class="step-label">기본 정보</span>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle" id="step3Circle">3</div>
+              <span class="step-label">추가 정보</span>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle" id="step4Circle">4</div>
+              <span class="step-label">약관 동의</span>
+            </div>
+            <div class="progress-step">
+              <div class="step-circle" id="step5Circle">✓</div>
+              <span class="step-label">가입 완료</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Steps -->
+        <div class="form-steps">
+          <!-- Step 1: User Type Selection -->
+          <div class="form-step active" id="step1">
+            <h2 class="step-title">회원 유형을 선택해주세요</h2>
+            <p class="step-subtitle">SEMO를 어떤 목적으로 이용하시나요?</p>
+
+            <div class="user-type-cards">
+              <div class="user-type-card" onclick="selectUserType('tenant')">
+                <div class="user-type-icon">📦</div>
+                <h3 class="user-type-title">임차인</h3>
+                <p class="user-type-description">
+                  창고를 임대하여 물품을 보관하고자 하는<br>
+                  개인 또는 기업 고객
+                </p>
+              </div>
+
+              <div class="user-type-card" onclick="selectUserType('owner')">
+                <div class="user-type-icon">🏢</div>
+                <h3 class="user-type-title">임대인</h3>
+                <p class="user-type-description">
+                  보유한 창고를 임대하여<br>
+                  수익을 창출하고자 하는 사업자
+                </p>
+              </div>
+            </div>
+
+            <div class="form-navigation">
+              <button type="button" class="btn btn-prev" style="visibility: hidden;">이전</button>
+              <button type="button" class="btn btn-next" onclick="nextStep(event)" disabled id="nextBtn1">다음</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Basic Information -->
+          <div class="form-step" id="step2">
+            <h2 class="step-title">기본 정보를 입력해주세요</h2>
+            <p class="step-subtitle">회원가입에 필요한 기본 정보입니다</p>
+
+            <form th:action="@{/member/signup}" method="post" enctype="multipart/form-data" id="signupForm">
+              <input type="hidden" name="userType" id="userType" value="">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">이름 <span class="required">*</span></label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="이름을 입력하세요" required>
+                  <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="phoneNumber">휴대폰 번호 <span class="required">*</span></label>
+                  <div class="input-group" style="flex-wrap: wrap;">
+                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-input" placeholder="010-0000-0000" required>
+                    <span class="error-message"></span>
+<!--                    <button type="button" class="btn-verify">인증하기</button>-->
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">이메일 <span class="required">*</span></label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="example@semo.com" required>
+                <span class="error-message"></span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="password">비밀번호 <span class="required">*</span></label>
+                  <input type="password" id="password" name="password" class="form-input" placeholder="8자 이상, 영문+숫자+특수문자" required>
+                  <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="passwordConfirm">비밀번호 확인 <span class="required">*</span></label>
+                  <input type="password" id="passwordConfirm" name="passwordConfirm" class="form-input" placeholder="비밀번호를 다시 입력하세요" required>
+                  <span class="error-message"></span>
+                </div>
+              </div>
+            </form>
+
+            <div class="form-navigation">
+              <button type="button" class="btn btn-prev" onclick="prevStep()">이전</button>
+              <button type="button" class="btn btn-next" onclick="nextStep(event)">다음</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Additional Information -->
+          <div class="form-step" id="step3">
+            <h2 class="step-title" id="step3Title">추가 정보를 입력해주세요</h2>
+            <p class="step-subtitle" id="step3Subtitle">서비스 이용에 필요한 추가 정보입니다</p>
+
+            <!-- Tenant Additional Info -->
+            <div id="tenantInfo" style="display: none;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="address">주소</label>
+                  <input type="text" id="address" name="address" class="form-input" onclick="execDaumPostcode();" placeholder="주소를 입력하세요">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="detailedAddress">상세주소</label>
+                  <input type="text" id="detailedAddress" name="detailedAddress" class="form-input" placeholder="상세주소를 입력하세요">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="purpose">이용 목적</label>
+                <select class="form-input" id="purpose" name="purpose">
+                  <option value="">선택하세요</option>
+                  <option value="personal">개인 보관</option>
+                  <option value="business">사업용 보관</option>
+                  <option value="moving">이사 임시 보관</option>
+                  <option value="other">기타</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="requiredSize">필요 공간 크기</label>
+                <select class="form-input" id="requiredSize" name="requiredSize">
+                  <option value="">선택하세요</option>
+                  <option value="1">1평 이하</option>
+                  <option value="2">2-3평</option>
+                  <option value="5">3-5평</option>
+                  <option value="10">5-10평</option>
+                  <option value="over">10평 이상</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Landlord Additional Info -->
+            <div id="landlordInfo" style="display: none;">
+              <div class="form-group">
+                <label class="form-label" for="businessRegistrationNumber">사업자 등록번호 <span class="required">*</span></label>
+                <div class="input-group">
+                  <input type="text" id="businessRegistrationNumber" name="businessRegistrationNumber" class="form-input" placeholder="000-00-00000" required>
+<!--                  <button type="button" class="btn-verify">확인</button>-->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="companyName">회사명 <span class="required">*</span></label>
+                <input type="text" id="companyName" name="companyName" class="form-input" placeholder="회사명을 입력하세요" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="ceoName">대표자명 <span class="required">*</span></label>
+                  <input type="text" id="ceoName" name="ceoName" class="form-input" placeholder="대표자명을 입력하세요" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="officePhoneNumber">사업장 전화번호</label>
+                  <input type="tel" id="officePhoneNumber" name="officePhoneNumber" class="form-input" placeholder="02-0000-0000">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="businessFile">사업자등록증 첨부</label>
+                <div class="file-upload">
+                  <input type="file" class="file-upload-input" id="businessFile" name="businessFile" accept=".jpg,.jpeg,.png,.pdf">
+                  <label for="businessFile" class="file-upload-label">
+                    📎 파일을 선택하거나 드래그하세요
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="warehouseAddress">창고 위치</label>
+                <input type="text" id="warehouseAddress" name="warehouseAddress" onclick="execDaumPostcode();" class="form-input" placeholder="창고 주소를 입력하세요">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="warehouseSize">창고 규모</label>
+                  <input type="text" id="warehouseSize" name="warehouseSize" class="form-input" placeholder="총 면적(평)">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="availableSize">임대 가능 공간</label>
+                  <input type="text" id="availableSize" name="availableSize" class="form-input" placeholder="임대 가능 면적(평)">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-navigation">
+              <button type="button" class="btn btn-prev" onclick="prevStep()">이전</button>
+              <button type="button" class="btn btn-next" onclick="nextStep(event)">다음</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Terms Agreement -->
+          <div class="form-step" id="step4">
+            <h2 class="step-title">이용약관에 동의해주세요</h2>
+            <p class="step-subtitle">SEMO 서비스 이용을 위한 약관 동의가 필요합니다</p>
+
+            <div class="checkbox-group">
+              <div class="checkbox-item checkbox-all">
+                <input type="checkbox" id="agreeAll" name="agreeAll" onchange="toggleAllCheckboxes()">
+                <label for="agreeAll" class="checkbox-label">
+                  모든 약관에 동의합니다
+                </label>
+              </div>
+
+              <div class="checkbox-item">
+                <input type="checkbox" id="terms1" name="terms1" class="agree-checkbox">
+                <label for="terms1" class="checkbox-label">
+                  <span class="required">[필수]</span>
+                  <a href="#" onclick="event.preventDefault()">이용약관</a>에 동의합니다
+                </label>
+              </div>
+
+              <div class="checkbox-item">
+                <input type="checkbox" id="terms2" name="terms2" class="agree-checkbox">
+                <label for="terms2" class="checkbox-label">
+                  <span class="required">[필수]</span>
+                  <a href="#" onclick="event.preventDefault()">개인정보 수집 및 이용</a>에 동의합니다
+                </label>
+              </div>
+
+              <div class="checkbox-item">
+                <input type="checkbox" id="terms3" name="terms3" class="agree-checkbox">
+                <label for="terms3" class="checkbox-label">
+                  <span class="required">[필수]</span>
+                  <a href="#" onclick="event.preventDefault()">전자거래 이용약관</a>에 동의합니다
+                </label>
+              </div>
+
+              <div class="checkbox-item">
+                <input type="checkbox" id="terms4" name="terms4" class="agree-checkbox">
+                <label for="terms4" class="checkbox-label">
+                  [선택] 마케팅 정보 수신에 동의합니다<br>
+                  <span style="font-size: 12px; color: #999;">
+                                    이벤트, 할인 혜택 등 다양한 정보를 받아보실 수 있습니다
+                                </span>
+                </label>
+              </div>
+
+              <div class="checkbox-item">
+                <input type="checkbox" id="terms5" name="terms5" class="agree-checkbox">
+                <label for="terms5" class="checkbox-label">
+                  [선택] 위치 정보 이용약관에 동의합니다<br>
+                  <span style="font-size: 12px; color: #999;">
+                                    주변 창고 추천 서비스를 이용하실 수 있습니다
+                                </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-navigation">
+              <button class="btn btn-prev" onclick="prevStep()">이전</button>
+              <button class="btn btn-submit" onclick="submitForm()" id="submitBtn" disabled>가입완료</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Success -->
+          <div class="form-step" id="step5">
+            <div class="success-content">
+              <div class="success-icon">🎉</div>
+              <h2 class="success-title">회원가입이 완료되었습니다!</h2>
+              <p class="success-description">
+                SEMO의 회원이 되신 것을 환영합니다.<br>
+                이제 안전하고 편리한 창고 서비스를 이용하실 수 있습니다.
+              </p>
+
+              <div class="success-buttons">
+                <button class="btn btn-prev" th:onclick="|window.location.href='@{/main}'|">메인으로</button>
+                <button class="btn btn-next" th:onclick="|window.location.href='@{/main/login}'|">로그인하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+
+  <th:block layout:fragment="extra-js">
+    <script th:inline="javascript">
+      // 페이지별 추가 하고 싶은 javascript가 있을 때
+      const signupUrl = [[@{/member/signup}]];
+    </script>
+    <script th:inline="javascript" th:src="@{/js/signup2.js}"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script th:inline="javascript" th:src="@{/js/postcode.js}"></script>
+  </th:block>
+
+</html>

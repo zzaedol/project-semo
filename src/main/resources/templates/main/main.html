@@ -1,0 +1,484 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: heowonjae
+  Date: 2025. 9. 1.
+  Time: 13:32
+  To change this template use File | Settings | File Templates.
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <!-- 페이지별 제목을 변경 하고 싶을 때 -->
+</th:block>
+
+<th:block layout:fragment="extra-css">
+  <!-- 페이지별 추가하고 싶은 style이 있을때 -->
+</th:block>
+
+<th:block layout:fragment="content">
+  <!-- main에 들어갈 페이지 내용 -->
+  <!-- HERO SECTION WITH FULL BACKGROUND SLIDER -->
+  <section class="hero">
+    <!-- Background Image Slider -->
+    <div class="hero-background-slider">
+      <!-- Slide 1 - 현대적인 창고 외관 -->
+      <div
+              class="slide active"
+              style="
+            background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&h=1080&fit=crop&auto=format&q=90');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          "
+      ></div>
+
+      <!-- Slide 2 - 정리된 창고 내부 -->
+      <div
+              class="slide"
+              style="
+            background-image: url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&h=1080&fit=crop&auto=format&q=90');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          "
+      ></div>
+
+      <!-- Slide 3 - 자연과 어우러진 컨테이너 시설 -->
+      <div
+              class="slide"
+              style="
+            background-image: url('https://images.unsplash.com/photo-1605902711834-8b11c3e3ef75?w=1920&h=1080&fit=crop&auto=format&q=90');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          "
+      ></div>
+
+      <!-- Slide 4 - 물류센터 랙 시스템 -->
+      <div
+              class="slide"
+              style="
+            background-image: url('https://images.unsplash.com/photo-1600725935160-f67ee4f6084a?w=1920&h=1080&fit=crop&auto=format&q=90');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          "
+      ></div>
+
+      <!-- Slide 5 - 대형 물류창고 전경 -->
+      <div
+              class="slide"
+              style="
+            background-image: url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=1920&h=1080&fit=crop&auto=format&q=90');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          "
+      ></div>
+    </div>
+
+    <!-- Blue Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>나만의 안전한 공유창고</h1>
+        <h1 class="hero-main-title">SEMO </h1>
+        <p class="subtitle">
+          합리적인 가격으로 원할때 필요한 만큼만 사용하는<br />스마트한 공유
+          창고 서비스 지금 시작하세요!
+        </p>
+
+        <div class="hero-features">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span>24시간 언제든 출입가능</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span>급하게 짐 보관이 필요할 때</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span>저렴하고 합리적인 가격</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span>완벽한 물품 보관 환경 제공</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="slide-nav prev" onclick="changeSlide(-1)">❮</div>
+    <div class="slide-nav next" onclick="changeSlide(1)">❯</div>
+
+    <!-- Slide Indicators -->
+    <div class="slide-indicators">
+      <span class="indicator active" onclick="goToSlide(0)"></span>
+      <span class="indicator" onclick="goToSlide(1)"></span>
+      <span class="indicator" onclick="goToSlide(2)"></span>
+      <span class="indicator" onclick="goToSlide(3)"></span>
+      <span class="indicator" onclick="goToSlide(4)"></span>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="services">
+    <h2 class="section-title">SEMO가 특별한 이유</h2>
+    <p class="section-subtitle">고객님의 소중한 물품을 안전하게 보관합니다</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3 class="service-title">철저한 보안</h3>
+        <p class="service-description">
+          24시간 CCTV 감시 및 스마트 출입 시스템으로 철저한 보안을 제공합니다
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🚚</div>
+        <h3 class="service-title">완벽한 보관환경</h3>
+        <p class="service-description">
+          전문 청소 인력 및 청결 유지 시스템으로 최적의 보관 환경을 365일
+          유지합니다
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3 class="service-title">실시간 스마트 관리</h3>
+        <p class="service-description">
+          실시간 창고 예약현황 대시보드로 언제 어디서나 창고를 예약하고 관리할
+          수 있습니다
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📀</div>
+        <h3 class="service-title">합리적인 가격</h3>
+        <p class="service-description">
+          창고의 크기, 장소, 대여 기간별로 합리적인 가격으로 이용 가능합니다
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">👨‍👩‍👦‍👦</div>
+        <h3 class="service-title">남녀노소 누구나 사용가능</h3>
+        <p class="service-description">
+          연령, 성별에 따라 누구나 사용하기 쉬운 서비스를 제공하는 SEMO입니다
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">😉</div>
+        <h3 class="service-title">즉각적인 피드백</h3>
+        <p class="service-description">
+          회원들의 요구사항을 반영하여 더 쾌적한 서비스를 제공합니다
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section class="reviews">
+    <h2 class="section-title">고객 후기</h2>
+    <p class="section-subtitle">SEMO를 이용한 고객들의 생생한 후기를 확인해보세요</p>
+
+    <div class="reviews-container">
+      <!-- 슬라이드 네비게이션 -->
+      <div class="reviews-nav reviews-nav-prev">❮</div>
+      <div class="reviews-nav reviews-nav-next">❯</div>
+
+      <!-- 후기 슬라이드 -->
+      <div class="reviews-slider">
+        <!-- Review 1 -->
+        <div class="review-slide active">
+          <div class="review-card">
+            <div class="review-rating">
+              <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="review-text">
+              "이사를 앞두고 짐을 임시로 보관할 곳이 필요했는데, SEMO 덕분에 정말 편리하게 해결했어요. 
+              24시간 언제든 접근 가능하고 보안도 철저해서 안심이 됩니다. 가격도 다른 곳보다 합리적이에요!"
+            </p>
+            <div class="review-author">
+              <div class="author-info">
+                <h4>김○○님</h4>
+                <span>Standard 플랜 이용 / 서울 강남점</span>
+              </div>
+              <div class="author-type">임차인</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-rating">
+              <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="review-text">
+              "소규모 사업을 하면서 재고 보관이 항상 고민이었는데, SEMO의 Premium 플랜을 이용하니 
+              전담 매니저까지 배정되어 정말 만족스럽습니다. 온습도 관리도 완벽하고 물건 상태가 그대로 유지되네요."
+            </p>
+            <div class="review-author">
+              <div class="author-info">
+                <h4>이○○님</h4>
+                <span>Premium 플랜 이용 / 인천 부평점</span>
+              </div>
+              <div class="author-type">임차인</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-rating">
+              <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="review-text">
+              "유학을 떠나면서 가구와 짐들을 장기간 보관해야 했는데, Basic 플랜도 정말 괜찮더라구요. 
+              1년 넘게 이용했는데 분실이나 손상 없이 잘 보관되었어요. 돌아와서 찾을 때도 너무 편했습니다."
+            </p>
+            <div class="review-author">
+              <div class="author-info">
+                <h4>박○○님</h4>
+                <span>Basic 플랜 이용 / 부산 해운대점</span>
+              </div>
+              <div class="author-type">임차인</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-rating">
+              <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="review-text">
+              "창고 공간이 남아서 SEMO에 등록했는데, 관리나 운영을 모두 맡겨주니 정말 편리해요. 
+              안정적인 수익도 나오고 고객 관리도 체계적으로 해주셔서 믿고 맡길 수 있습니다."
+            </p>
+            <div class="review-author">
+              <div class="author-info">
+                <h4>최○○님</h4>
+                <span>창고 임대 / 경기 성남점</span>
+              </div>
+              <div class="author-type">임대인</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-rating">
+              <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="review-text">
+              "회사에서 계절 상품 보관용으로 이용하고 있는데, 직원들이 언제든 출입할 수 있어서 업무 효율이 많이 올랐어요. 
+              보험 혜택도 있어서 고가의 상품들도 안심하고 보관할 수 있습니다."
+            </p>
+            <div class="review-author">
+              <div class="author-info">
+                <h4>정○○님</h4>
+                <span>Standard 플랜 이용 / 대구 수성점</span>
+              </div>
+              <div class="author-type">임차인</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-rating">
+              <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="review-text">
+              "부동산 투자로 구매한 건물에 여유 공간이 있어서 SEMO와 파트너십을 맺었는데, 
+              전문적인 관리 시스템과 마케팅 덕분에 예상보다 훨씬 좋은 수익을 내고 있어요."
+            </p>
+            <div class="review-author">
+              <div class="author-info">
+                <h4>한○○님</h4>
+                <span>창고 임대 / 광주 서구점</span>
+              </div>
+              <div class="author-type">임대인</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 인디케이터 -->
+      <div class="reviews-indicators">
+        <span class="review-indicator active"></span>
+        <span class="review-indicator"></span>
+        <span class="review-indicator"></span>
+        <span class="review-indicator"></span>
+        <span class="review-indicator"></span>
+        <span class="review-indicator"></span>
+      </div>
+    </div>
+  </section>
+
+</th:block>
+
+<th:block layout:fragment="extra-js">
+  <script th:inline="javascript">
+    // 페이지별 추가 하고 싶은 javascript가 있을 때
+    
+    // 즉시 실행 함수로 변수 스코프 격리
+    (function() {
+      // Hero Background Slider
+      let heroCurrentSlide = 0;
+      let heroSlides = [];
+      let heroIndicators = [];
+      let heroTotalSlides = 0;
+
+      // Reviews Slider 변수
+      let reviewCurrentSlide = 0;
+      let reviewSlides = [];
+      let reviewIndicators = [];
+      let reviewTotalSlides = 0;
+
+      // Hero 슬라이더 함수들
+      function showHeroSlide(index) {
+        heroSlides.forEach(slide => slide.classList.remove('active'));
+        heroIndicators.forEach(indicator => indicator.classList.remove('active'));
+
+        if (heroSlides[index]) {
+          heroSlides[index].classList.add('active');
+          heroIndicators[index].classList.add('active');
+        }
+        heroCurrentSlide = index;
+      }
+
+      function changeHeroSlide(direction) {
+        heroCurrentSlide += direction;
+        if (heroCurrentSlide >= heroTotalSlides) heroCurrentSlide = 0;
+        else if (heroCurrentSlide < 0) heroCurrentSlide = heroTotalSlides - 1;
+        showHeroSlide(heroCurrentSlide);
+      }
+
+      function goToHeroSlide(index) {
+        showHeroSlide(index);
+      }
+
+      // Reviews 슬라이더 함수들
+      function showReviewSlide(index) {
+        console.log('showReviewSlide called with index:', index);
+        
+        reviewSlides.forEach(slide => slide.classList.remove('active'));
+        reviewIndicators.forEach(indicator => indicator.classList.remove('active'));
+
+        if (reviewSlides[index]) {
+          reviewSlides[index].classList.add('active');
+          reviewIndicators[index].classList.add('active');
+        }
+        reviewCurrentSlide = index;
+      }
+
+      function changeReviewSlide(direction) {
+        console.log('changeReviewSlide called with direction:', direction);
+        
+        reviewCurrentSlide += direction;
+        if (reviewCurrentSlide >= reviewTotalSlides) reviewCurrentSlide = 0;
+        else if (reviewCurrentSlide < 0) reviewCurrentSlide = reviewTotalSlides - 1;
+        showReviewSlide(reviewCurrentSlide);
+      }
+
+      function goToReviewSlide(index) {
+        console.log('goToReviewSlide called with index:', index);
+        showReviewSlide(index);
+      }
+
+      // 초기화
+      document.addEventListener('DOMContentLoaded', function() {
+        // Hero 슬라이더 초기화
+        heroSlides = document.querySelectorAll('.hero-background-slider .slide');
+        heroIndicators = document.querySelectorAll('.slide-indicators .indicator');
+        heroTotalSlides = heroSlides.length;
+        
+        if (heroSlides.length > 0) {
+          showHeroSlide(0);
+        }
+
+        // Reviews 슬라이더 초기화
+        reviewSlides = document.querySelectorAll('.review-slide');
+        reviewIndicators = document.querySelectorAll('.review-indicator');
+        reviewTotalSlides = reviewSlides.length;
+        
+        console.log('Reviews initialized:', reviewTotalSlides, 'slides found');
+        
+        if (reviewSlides.length > 0) {
+          showReviewSlide(0);
+        }
+
+        // 후기 슬라이더 이벤트 리스너 추가
+        const prevBtn = document.querySelector('.reviews-nav-prev');
+        const nextBtn = document.querySelector('.reviews-nav-next');
+        
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function() {
+            console.log('Prev button clicked');
+            changeReviewSlide(-1);
+          });
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function() {
+            console.log('Next button clicked');
+            changeReviewSlide(1);
+          });
+        }
+
+        // 인디케이터 이벤트 리스너 추가
+        reviewIndicators.forEach((indicator, index) => {
+          indicator.addEventListener('click', function() {
+            console.log('Indicator clicked:', index);
+            goToReviewSlide(index);
+          });
+        });
+
+        // Hero 슬라이더 인디케이터 이벤트 리스너 추가
+        heroIndicators.forEach((indicator, index) => {
+          indicator.addEventListener('click', function() {
+            goToHeroSlide(index);
+          });
+        });
+      });
+
+      // 전역 함수로 설정 (Hero 슬라이더용, 기존 코드와의 호환성 유지)
+      window.changeSlide = changeHeroSlide;
+      window.goToSlide = goToHeroSlide;
+
+      // 자동 슬라이드
+      setInterval(() => {
+        if (heroSlides.length > 0) {
+          changeHeroSlide(1);
+        }
+      }, 4000);
+
+      // 후기 자동 슬라이드 (6초마다)
+      setInterval(() => {
+        if (reviewSlides.length > 0) {
+          changeReviewSlide(1);
+        }
+      }, 6000);
+      
+    })(); // 즉시 실행 함수 종료
+  </script>
+</th:block>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <!-- 페이지별 제목을 변경 하고 싶을 때 -->
+</th:block>
+
+<th:block layout:fragment="extra-css">
+  <!-- 페이지별 추가하고 싶은 style이 있을때 -->
+  <link rel="stylesheet" th:href="@{/css/login.css}">
+</th:block>
+
+<th:block layout:fragment="content">
+  <!-- main에 들어갈 페이지 내용 -->
+  <!-- LOGIN CONTAINER -->
+  <div class="login-wrapper">
+    <div class="login-container">
+      <!-- LEFT SIDE - LOGIN FORM -->
+      <div class="login-form-section">
+        <h1 class="login-title">환영합니다!</h1>
+        <p class="login-subtitle">SEMO와 함께 안전한 창고 관리를 시작하세요</p>
+
+        <!-- User Type Selector -->
+        <div class="user-type-selector">
+          <button class="user-type-btn active" onclick="selectUserType(this, 'tenant')">
+            <span class="user-type-icon">📦</span>
+            <span>임차인</span>
+          </button>
+          <button class="user-type-btn" onclick="selectUserType(this, 'landlord')">
+            <span class="user-type-icon">🏢</span>
+            <span>임대인</span>
+          </button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+          <div class="form-group">
+            <label class="form-label" for="email">이메일</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="example@semo.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">비밀번호</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="비밀번호를 입력하세요" required>
+          </div>
+
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember">
+              <label for="remember">로그인 상태 유지</label>
+            </div>
+            <a href="#" class="forgot-link">비밀번호 찾기</a>
+          </div>
+
+          <button type="submit" class="login-button">로그인</button>
+        </form>
+
+        <!-- Social Login -->
+        <div class="divider">
+          <span>간편 로그인</span>
+        </div>
+
+        <div class="social-login-buttons">
+          <button class="social-btn kakao">
+            <span class="social-icon">💬</span>
+            <span>카카오</span>
+          </button>
+          <button class="social-btn google">
+            <span class="social-icon">G</span>
+            <span>구글</span>
+          </button>
+          <button class="social-btn naver">
+            <span class="social-icon">N</span>
+            <span>네이버</span>
+          </button>
+        </div>
+
+        <!-- Sign up link -->
+        <div class="signup-link">
+          아직 회원이 아니신가요? <a th:href="@{/member/signup}">회원가입</a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE - INFO SECTION -->
+      <div class="info-section">
+        <div class="info-content">
+          <div class="info-icon">🔐</div>
+          <h2 class="info-title">안전한 창고 관리의 시작</h2>
+          <p class="info-description">
+            SEMO는 최첨단 보안 시스템과 스마트한 관리 도구로<br>
+            여러분의 소중한 물품을 안전하게 보호합니다
+          </p>
+
+          <div class="info-features">
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              <span>24시간 실시간 CCTV 모니터링</span>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              <span>스마트폰으로 언제든 출입 관리</span>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              <span>온습도 자동 조절 시스템</span>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">✓</div>
+              <span>화재 및 도난 종합 보험 가입</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</th:block>
+
+<th:block layout:fragment="extra-js">
+  <script th:inline="javascript">
+    // 페이지별 추가 하고 싶은 javascript가 있을 때
+    const loginSuccessUrl = [[@{/main}]];
+  </script>
+  <script th:src="@{/js/login.js}"></script>
+</th:block>
+
+</html>
