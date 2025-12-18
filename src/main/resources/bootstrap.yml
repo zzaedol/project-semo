@@ -4,14 +4,15 @@ spring:
     name: semo
   cloud:
     vault:
-      enabled: true
+      # 개발 환경에서 Vault 비활성화
+      enabled: false
       uri: http://10.100.203.57:8200
       authentication: TOKEN
       token: myroot
-      fail-fast: true
+      fail-fast: false
       connect-timeout: 5000
       read-timeout: 15000
       generic:
-        enabled: true
+        enabled: false
         # Vault에 저장된 비밀 정보를 가져올 경로
-        path: secret/semo
+      path: secret/semo

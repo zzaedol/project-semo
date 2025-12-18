@@ -1,6 +1,7 @@
 package com.semo.repository;
 
 import com.semo.entity.Warehouse;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,12 +18,9 @@ public interface WarehouseRepository extends JpaRepository<Warehouse, Long> {
   // save(), findById(), findAll() 등의 기본 메서드를 별도 구현 없이 사용할 수 있습니다.
 
   /**
-   * (선택 사항) 특정 소유주(Member)가 등록한 모든 창고를 조회할 때 사용될 수 있습니다.
+   * 특정 소유주(Member)가 등록한 모든 창고를 조회합니다.
    * @param ownerId 소유주 Member의 ID
    * @return 해당 소유주가 등록한 Warehouse Entity 목록
-   *
-   * // 주석: Warehouse 엔티티에 'owner' 필드가 Member 타입으로 존재하므로,
-   * // JPA 쿼리 메서드 기능을 사용하여 간편하게 정의할 수 있습니다.
-   * // List<Warehouse> findByOwnerId(Long ownerId);
    */
+  List<Warehouse> findByOwnerId(Long ownerId);
 }

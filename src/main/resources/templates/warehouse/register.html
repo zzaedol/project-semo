@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+
+<th:block layout:fragment="head">
+  <title>창고 등록 - SEMO</title>
+</th:block>
+
+<th:block layout:fragment="extra-css">
+  <style>
+    .warehouse-form-page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .form-header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .form-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .form-subtitle {
+      color: #6c757d;
+    }
+    .form-container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+    .form-section {
+      margin-bottom: 30px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e9ecef;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #495057;
+    }
+    .required {
+      color: #dc3545;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .radio-group {
+      display: flex;
+      gap: 20px;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .form-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary:hover {
+      background: #545b62;
+    }
+    .alert {
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .alert-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+  </style>
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="warehouse-form-page">
+    <!-- 헤더 -->
+    <div class="form-header">
+      <h1 class="form-title">📦 창고 등록</h1>
+      <p class="form-subtitle">새로운 창고 정보를 등록해주세요</p>
+    </div>
+
+    <!-- 알림 메시지 -->
+    <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+    <!-- 등록 폼 -->
+    <div class="form-container">
+      <form th:action="@{/warehouse/register}" th:object="${warehouse}" method="post" enctype="multipart/form-data">
+        <!-- 기본 정보 -->
+        <div class="form-section">
+          <h2 class="section-title">기본 정보</h2>
+
+          <div class="form-group">
+            <label for="title" class="form-label">창고명 <span class="required">*</span></label>
+            <input type="text" id="title" th:field="*{title}" class="form-input"
+                   placeholder="예: 강남 프리미엄 창고" required>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">상세 설명</label>
+            <textarea id="description" th:field="*{description}" class="form-textarea" rows="5"
+                      placeholder="창고의 특징을 자유롭게 작성해주세요"></textarea>
+          </div>
+        </div>
+
+        <!-- 위치 정보 -->
+        <div class="form-section">
+          <h2 class="section-title">위치 정보</h2>
+
+          <div class="form-group">
+            <label for="address" class="form-label">주소 <span class="required">*</span></label>
+            <input type="text" id="address" th:field="*{address}" class="form-input"
+                   placeholder="예: 서울특별시 강남구 테헤란로 123" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="latitude" class="form-label">위도</label>
+              <input type="number" id="latitude" th:field="*{latitude}" class="form-input"
+                     step="0.000001" placeholder="37.4979">
+            </div>
+
+            <div class="form-group">
+              <label for="longitude" class="form-label">경도</label>
+              <input type="number" id="longitude" th:field="*{longitude}" class="form-input"
+                     step="0.000001" placeholder="127.0276">
+            </div>
+          </div>
+        </div>
+
+        <!-- 창고 상세 정보 -->
+        <div class="form-section">
+          <h2 class="section-title">창고 상세 정보</h2>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="areaSqm" class="form-label">면적 (㎡) <span class="required">*</span></label>
+              <input type="number" id="areaSqm" th:field="*{areaSqm}" class="form-input"
+                     step="0.01" min="0" placeholder="50.00" required>
+            </div>
+
+            <div class="form-group">
+              <label for="pricePerMonth" class="form-label">월 임대료 (원) <span class="required">*</span></label>
+              <input type="number" id="pricePerMonth" th:field="*{pricePerMonth}" class="form-input"
+                     step="1000" min="0" placeholder="500000" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">예약 가능 여부 <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" th:field="*{availableStatus}" value="true" checked>
+                <span>예약 가능</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" th:field="*{availableStatus}" value="false">
+                <span>예약 불가</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="image" class="form-label">창고 이미지</label>
+            <input type="file" id="image" name="image" class="form-input" accept="image/*">
+          </div>
+        </div>
+
+        <!-- 버튼 -->
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-primary">등록하기</button>
+          <a th:href="@{/warehouse/list}" class="btn btn-secondary">취소</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</th:block>
+
+</html>

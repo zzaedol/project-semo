@@ -54,15 +54,16 @@ public class SecurityConfig {
         // CSRF(Cross-Site Request Forgery) 보호를 비활성화합니다.
         // REST API 서버는 세션을 사용하지 않으므로 CSRF 공격에 대한 위험이 적습니다.
         .csrf(AbstractHttpConfigurer::disable)
+        // H2 Console을 위한 frame 허용 (개발 환경에서만)
+        .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
         // 세션 관리 정책을 STATELESS(무상태)로 설정합니다.
         // 서버에 사용자 상태를 저장하지 않고, JWT 토큰으로 인증을 처리합니다.
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         // HTTP 요청에 대한 인가 규칙을 설정합니다.
-//        .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authorize -> authorize
             .requestMatchers(PUBLIC_RESOURCES).permitAll()
             // H2-Console에 대한 접근을 모두 허용합니다. (개발 환경에서만)
-//            .requestMatchers(PathRequest.toH2Console()).permitAll()
+            .requestMatchers("/h2-console/**").permitAll()
             // 로그인 및 회원가입 API는 인증 없이 접근을 허용합니다.
             .requestMatchers("/api/member/login", "/api/member/register").permitAll()
             // 로그아웃 API는 인증된 사용자만 접근 가능합니다.

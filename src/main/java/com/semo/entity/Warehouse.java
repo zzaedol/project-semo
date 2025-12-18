@@ -65,4 +65,27 @@ public class Warehouse extends BasicEntity {
   @Column(name = "image_path")
   private String imagePath;
 
+  /**
+   * 창고 정보 업데이트
+   */
+  public void updateWarehouse(String title, String description, String address,
+      BigDecimal areaSqm, BigDecimal pricePerMonth, Boolean availableStatus,
+      Double latitude, Double longitude) {
+    this.title = title;
+    this.description = description;
+    this.address = address;
+    this.areaSqm = areaSqm;
+    this.pricePerMonth = pricePerMonth;
+    this.availableStatus = availableStatus;
+    this.latitude = latitude;
+    this.longitude = longitude;
+  }
+
+  /**
+   * 이미지 경로 업데이트
+   */
+  public void updateImagePath(String imagePath) {
+    this.imagePath = imagePath;
+  }
+
 }

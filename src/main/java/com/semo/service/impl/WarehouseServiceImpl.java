@@ -110,6 +110,87 @@ public class WarehouseServiceImpl implements WarehouseService {
         .collect(Collectors.toList());
   }
 
+  @Override
+  public List<WarehouseDTO> getWarehousesByOwnerId(Long ownerId) {
+    log.info("소유주 ID {}의 창고 목록 조회", ownerId);
+
+    List<Warehouse> warehouses = warehouseRepository.findByOwnerId(ownerId);
+
+    return warehouses.stream()
+        .map(this::convertToDTO)
+        .collect(Collectors.toList());
+  }
+
+  @Override
+  public WarehouseDTO getWarehouseById(Long warehouseId) {
+    log.info("창고 ID {} 상세 조회", warehouseId);
+
+    Warehouse warehouse = warehouseRepository.findById(warehouseId)
+        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 창고입니다. ID: " + warehouseId));
+
+    return convertToDTO(warehouse);
+  }
+
+  @Override
+  @Transactional
+  public WarehouseDTO updateWarehouse(Long warehouseId, WarehouseRegisterDTO dto, MultipartFile image) {
+    log.info("창고 ID {} 수정 시작", warehouseId);
+
+    // 기존 창고 조회
+    Warehouse warehouse = warehouseRepository.findById(warehouseId)
+        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 창고입니다. ID: " + warehouseId));
+
+    // 이미지 업데이트 (새 이미지가 있는 경우)
+    if (image != null && !image.isEmpty()) {
+      try {
+        String newImagePath = saveImage(image);
+        warehouse.updateImagePath(newImagePath);
+        log.info("이미지 수정 완료: {}", newImagePath);
+      } catch (IOException e) {
+        log.error("이미지 저장 실패", e);
+        throw new RuntimeException("이미지 저장에 실패했습니다.", e);
+      }
+    }
+
+    // 창고 정보 업데이트
+    warehouse.updateWarehouse(
+        dto.getTitle(),
+        dto.getDescription(),
+        dto.getAddress(),
+        dto.getAreaSqm(),
+        dto.getPricePerMonth(),
+        dto.getAvailableStatus(),
+        dto.getLatitude(),
+        dto.getLongitude()
+    );
+
+    Warehouse updatedWarehouse = warehouseRepository.save(warehouse);
+
+    log.info("창고 수정 완료 - 창고 ID: {}, 창고명: {}", updatedWarehouse.getId(), updatedWarehouse.getTitle());
+
+    return convertToDTO(updatedWarehouse);
+  }
+
+  @Override
+  @Transactional
+  public void deleteWarehouse(Long warehouseId, Long ownerId) {
+    log.info("창고 ID {} 삭제 시작 (소유주 ID: {})", warehouseId, ownerId);
+
+    // 창고 조회
+    Warehouse warehouse = warehouseRepository.findById(warehouseId)
+        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 창고입니다. ID: " + warehouseId));
+
+    // 소유주 권한 확인
+    if (!warehouse.getOwner().getId().equals(ownerId)) {
+      throw new IllegalStateException("창고를 삭제할 권한이 없습니다.");
+    }
+
+    // 삭제
+    warehouseRepository.delete(warehouse);
+
+    log.info("창고 삭제 완료 - 창고 ID: {}", warehouseId);
+  }
+
   private WarehouseDTO convertToDTO(Warehouse warehouse) {
     return WarehouseDTO.builder()
         .id(warehouse.getId())
